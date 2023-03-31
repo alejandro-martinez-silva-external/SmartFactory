@@ -6,10 +6,11 @@ using UnityEngine.InputSystem;
 
 public class InputTest : MonoBehaviour
 {
-    [SerializeField] InputActionReference controllerActionGrip;
+    [SerializeField] InputActionReference controllerActionGrip = null;
+    
 
     private void Awake(){
-        controllerActionGrip.action.performed += GripPress;
+        controllerActionGrip.action.started += Toggle;
     }
 
     private void Update()
@@ -87,7 +88,11 @@ public class InputTest : MonoBehaviour
         }
     }
 
-    private void GripPress(InputAction.CallbackContext obj){
+    private void Toggle(InputAction.CallbackContext obj){
         Debug.Log("Test");
+    }
+
+    private void OnDestroy(){
+        controllerActionGrip.action.started -= Toggle;
     }
 }

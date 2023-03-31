@@ -7418,7 +7418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222cedc8296a0ee488a3481c3f627e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerActionGrip: {fileID: 0}
+  controllerActionGrip: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
 --- !u!4 &2000970986
 Transform:
   m_ObjectHideFlags: 0

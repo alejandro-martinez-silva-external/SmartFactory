@@ -669,10 +669,21 @@
                 {
                     "name": "",
                     "id": "487f4f2e-9e9b-49aa-b0f2-4037a24624f5",
-                    "path": "<XRController>{LeftHand}/triggerPressed",
-                    "interactions": "",
+                    "path": "<OculusTouchController>/menu",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Generic XR Controller",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a87c4a8-06a5-41a2-85a1-ec19b01d3944",
+                    "path": "<Keyboard>/#(P)",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
                     "action": "Activate",
                     "isComposite": false,
                     "isPartOfComposite": false
