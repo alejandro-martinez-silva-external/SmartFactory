@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Video;
+using UnityEngine.InputSystem;
+
 
 public class PauseMenu : MonoBehaviour
 {
@@ -18,6 +20,14 @@ public class PauseMenu : MonoBehaviour
     public float maxHeight;
     public float rotationSpeed = 0.1f;
     [SerializeField] private GameObject tunnelingEffect;
+
+    [SerializeField] InputActionReference controllerActionGrip = null;
+
+
+    private void Awake()
+    {
+        controllerActionGrip.action.started += ToggleCanvas;
+    }
 
     void Start(){
     pausePanel.SetActive(false);
@@ -74,5 +84,10 @@ public class PauseMenu : MonoBehaviour
 
     public void UpdateTunneling(){
         tunnelingEffect.SetActive(!tunnelingEffect.activeSelf);
+    }
+
+    private void ToggleCanvas(InputAction.CallbackContext obj)
+    {
+        UpdatePauseMenu();
     }
 }
