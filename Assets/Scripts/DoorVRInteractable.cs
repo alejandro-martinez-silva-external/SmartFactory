@@ -3,7 +3,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.XR.Content.Interaction
 {
-    public class Door : MonoBehaviour
+    public class DoorVRInteractable : MonoBehaviour
     {
         [SerializeField]
         HingeJoint m_DoorJoint;
@@ -12,8 +12,8 @@ namespace UnityEngine.XR.Content.Interaction
         [Tooltip("Transform joint that pulls a door to follow an interactor")]
         TransformJoint m_DoorPuller;
 
-        // [SerializeField]
-        // GameObject m_KeyKnob;
+        [SerializeField]
+        GameObject m_KeyKnob;
 
         [SerializeField]
         float m_HandleOpenValue = 0.1f;
@@ -71,7 +71,7 @@ namespace UnityEngine.XR.Content.Interaction
             m_ClosedDoorLimits.min = 0.0f;
             m_ClosedDoorLimits.max = 0.0f;
             m_DoorJoint.limits = m_ClosedDoorLimits;
-            // m_KeyKnob.SetActive(false);
+            m_KeyKnob.SetActive(false);
             m_Closed = true;
         }
 
@@ -92,17 +92,17 @@ namespace UnityEngine.XR.Content.Interaction
 
             if (m_KnobInteractor != null && m_KnobInteractorAttachTransform != null)
             {
-                // var distance = (m_KnobInteractorAttachTransform.position - m_KeyKnob.transform.position).magnitude;
+                var distance = (m_KnobInteractorAttachTransform.position - m_KeyKnob.transform.position).magnitude;
 
                 // If over threshold, break and grant the key back to the interactor
-                // if (distance > m_KeyPullDistance)
-                // {
+                if (distance > m_KeyPullDistance)
+                {
                     var newKeyInteractor = m_KnobInteractor;
                     m_KeySocket.SetActive(true);
                     m_Key.transform.gameObject.SetActive(true);
                     newKeyInteractor.interactionManager.SelectEnter(newKeyInteractor, m_Key);
-                    // m_KeyKnob.SetActive(false);
-                // }
+                    m_KeyKnob.SetActive(false);
+                }
             }
         }
 
@@ -138,7 +138,7 @@ namespace UnityEngine.XR.Content.Interaction
             m_Key = args.interactableObject;
             m_KeySocket.SetActive(false);
             m_Key.transform.gameObject.SetActive(false);
-            // m_KeyKnob.SetActive(true);
+            m_KeyKnob.SetActive(true);
         }
 
         public void KeyUpdate(float keyValue)
