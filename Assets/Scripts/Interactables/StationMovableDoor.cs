@@ -13,14 +13,42 @@ public class StationMovableDoor : MonoBehaviour
     public bool isMoving = false;
     private Vector3 dir;
 
+    // public void InteractDoor(){
+    //     isOpen = !isOpen;
+    //     isMoving = !isMoving;
+    //     if(isOpen){
+    //         dir = openPos.position - door.transform.position;
+    //     }
+    //     else{
+    //         dir = closedPos.position - door.transform.position;
+    //     }
+    // }
+
+    // private void Update() {
+    //     if(!isMoving) return;
+
+    //     if(isOpen){
+    //         door.transform.Translate(dir * speed * Time.deltaTime);
+    //         // door.transform.position = Vector3.MoveTowards();
+    //         if(door.transform.position != openPos.position) return;
+    //     }
+    //     else{
+    //         door.transform.Translate(dir * speed * Time.deltaTime);
+    //         print(door.transform.position);
+    //         if(door.transform.position != closedPos.position) return;
+    //     }
+    //     isMoving = false;
+    //     isOpen = !isOpen;
+    // }
+
     public void InteractDoor(){
         isOpen = !isOpen;
-        isMoving = !isMoving;
+        // isMoving = !isMoving;
         if(isOpen){
-            dir = openPos.position - door.transform.position;
+            door.transform.position = openPos.position;
         }
         else{
-            dir = closedPos.position - door.transform.position;
+            door.transform.position = closedPos.position;
         }
     }
 
