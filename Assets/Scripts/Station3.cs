@@ -18,8 +18,12 @@ public class Station3 : MonoBehaviour
     private float validatingTimer;
     private StationMovableDoor movableDoor;
     private float lightTimer;
+    private float textTimer;
+    public float textTime2Disappear;
+    private bool isTextDisplayed;
 
     public TextMeshProUGUI statusTxt;
+    private TextValues textValues;
 
     private void Awake() {
         movableDoor = FindObjectOfType<StationMovableDoor>();
@@ -27,6 +31,10 @@ public class Station3 : MonoBehaviour
 
     void Start()
     {
+        textValues = new TextValues();
+
+        SetText(false);
+        statusTxt.color = Color.black;
         redLight.SetActive(false);
         yellowLight.SetActive(false);
         greenLight.SetActive(false);
@@ -51,25 +59,53 @@ public class Station3 : MonoBehaviour
                 greenLight.SetActive(false);
             }
         }
+        if(isTextDisplayed){
+            textTimer += Time.deltaTime;
+            if(textTimer >= textTime2Disappear){
+                isTextDisplayed = false;
+                SetText(false);
+            }
+        }
     }
 
     public void StartValidating(){
+        if(isValidating){
+            return;
+        }
+        movableDoor.InteractDoor();
         isValidating = true;
         redLight.SetActive(false);
         greenLight.SetActive(false);
         yellowLight.SetActive(true);
-        statusTxt.text = "Validating...";
+        SetText(true);
+
+        statusTxt.color = Color.black;
+        statusTxt.text = textValues.validationInProgress;
+        print(textValues.validationInProgress);
     }
 
     public void PauseTimer(){
-        isValidating = false;
-        statusTxt.text = "Validation Paused";
+        if(lightTimer == 0) return;
+        isValidating = !isValidating;
+        statusTxt.color = Color.yellow;
+        SetText(true);
+        if(isValidating){
+            statusTxt.text = textValues.validationResumed;
+            print(textValues.validationResumed);
+        }
+        else{
+            statusTxt.text = textValues.validationPaused;
+            print(textValues.validationPaused);
+        }
+        
     }
 
     public void StopTimer(){
         isValidating = false;
         lightTimer = 0;
-        statusTxt.text = "Validation Stopped";
+        SetText(true);
+        print(textValues.validationStopped);
+        statusTxt.text = textValues.validationStopped;
     }
 
     public void CheckItem(){
@@ -78,31 +114,50 @@ public class Station3 : MonoBehaviour
         }
 
         Collider[] colliders= Physics.OverlapBox(center.position, transform.localScale * sizeMultiplier, Quaternion.identity);
-        if(colliders.Length <= 0) {
-            redLight.SetActive(true);
-            lightTimer = 0;
-
-            return;
-        }
+        string tempText = "";
         for(int i = 0; i < colliders.Length; i++){
             if(colliders[i].GetComponentInChildren<XRGrabInteractable>()){
                 for(int j = 0; j < validObjects.Length; j++){
                     if(colliders[i].gameObject == validObjects[j]){
                         greenLight.SetActive(true);
-                        statusTxt.text = "Correct Item";
-                        lightTimer = 0;
-                        movableDoor.InteractDoor();
+                        tempText = textValues.correctItem;
+                        statusTxt.color = Color.green;
+                    }
+                    else{
+                        if(!greenLight.activeSelf) {
+                            redLight.SetActive(true);
+                            SetText(true);
+                            tempText = textValues.wrongItem;
+                            print(colliders[0].gameObject.transform.parent.name);
+                            statusTxt.color = Color.red;
+                            lightTimer = 0;
+                        }
                     }
                 }
             }
+            else{
+                if(tempText != textValues.correctItem && tempText != textValues.wrongItem){
+                    tempText = textValues.noItemDetected;
+                    statusTxt.color = Color.red;
+                    redLight.SetActive(true);
+                }
+            }
         }
-        if(!greenLight.activeSelf) {
-            redLight.SetActive(true);
-            statusTxt.text = "Wrong Item";
-            lightTimer = 0;
-            movableDoor.InteractDoor();
-        }
+        
+        
+        SetText(true);
+        statusTxt.SetText(tempText);
         lightTimer = 0;
+        movableDoor.InteractDoor();
+    }
+
+    public void SetText(bool val){
+        // print("Val is: " + val);
+        statusTxt.gameObject.SetActive(val);
+        if(val){
+            textTimer = 0;
+            isTextDisplayed = true;
+        }
     }
 
     private void OnDrawGizmos() {
