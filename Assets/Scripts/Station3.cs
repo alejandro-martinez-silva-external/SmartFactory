@@ -101,8 +101,11 @@ public class Station3 : MonoBehaviour
     }
 
     public void StopTimer(){
+        if(!isValidating) return;
         isValidating = false;
+        movableDoor.InteractDoor();
         lightTimer = 0;
+        statusTxt.color = Color.red;
         SetText(true);
         print(textValues.validationStopped);
         statusTxt.text = textValues.validationStopped;
