@@ -3567,6 +3567,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192157984}
   m_CullTransparentMesh: 1
+--- !u!1 &197876071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 197876072}
+  - component: {fileID: 197876074}
+  - component: {fileID: 197876075}
+  m_Layer: 0
+  m_Name: SnapObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &197876072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197876071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.057, y: 1.14, z: -0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450653322898382}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &197876074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197876071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe032b2d005f3447a72e086d45e0f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isUsed: 0
+--- !u!65 &197876075
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197876071}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.551646, y: 0.37692213, z: 1.3361639}
+  m_Center: {x: -0.4105472, y: 0.14256942, z: -0.2909931}
 --- !u!1 &205405127
 GameObject:
   m_ObjectHideFlags: 0
@@ -28904,7 +28963,7 @@ PrefabInstance:
     - target: {fileID: 7824319270157746614, guid: f82abdd31bfe9b749b21edfda28e5130,
         type: 3}
       propertyPath: m_OnPress.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7824319270157746614, guid: f82abdd31bfe9b749b21edfda28e5130,
         type: 3}
@@ -28920,7 +28979,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 143309063}
+      objectReference: {fileID: 919132149405430133}
     - target: {fileID: 7824319270157746614, guid: f82abdd31bfe9b749b21edfda28e5130,
         type: 3}
       propertyPath: m_OnPress.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -28939,7 +28998,7 @@ PrefabInstance:
     - target: {fileID: 7824319270157746614, guid: f82abdd31bfe9b749b21edfda28e5130,
         type: 3}
       propertyPath: m_OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: InteractDoor
+      value: StopTimer
       objectReference: {fileID: 0}
     - target: {fileID: 7824319270157746614, guid: f82abdd31bfe9b749b21edfda28e5130,
         type: 3}
@@ -28949,7 +29008,7 @@ PrefabInstance:
     - target: {fileID: 7824319270157746614, guid: f82abdd31bfe9b749b21edfda28e5130,
         type: 3}
       propertyPath: m_OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StationMovableDoor, Assembly-CSharp
+      value: Station3, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7824319270157746614, guid: f82abdd31bfe9b749b21edfda28e5130,
         type: 3}
@@ -43804,6 +43863,7 @@ Transform:
   - {fileID: 517676996}
   - {fileID: 72150600}
   - {fileID: 1066627293}
+  - {fileID: 197876072}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -44981,7 +45041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652147869181}
   m_Layer: 0
-  m_Name: stac.0.7
+  m_Name: ESTACION_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

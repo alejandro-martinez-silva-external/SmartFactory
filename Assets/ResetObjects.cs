@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 
 public class ResetObjects : MonoBehaviour
@@ -11,6 +10,7 @@ public class ResetObjects : MonoBehaviour
         if(grabComponent != null){
             other.transform.position = grabComponent.pos;
             other.transform.rotation = grabComponent.rot;
+            other.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }
