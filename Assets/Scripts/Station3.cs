@@ -9,6 +9,7 @@ public class Station3 : MonoBehaviour
     public float sizeMultiplier;
     public float validationTime;
     public float lightDuration;
+    public Animator armAnim;
     public Transform center;
     public GameObject redLight;
     public GameObject yellowLight;
@@ -72,7 +73,7 @@ public class Station3 : MonoBehaviour
         if(isValidating){
             return;
         }
-        movableDoor.InteractDoor();
+        armAnim.SetTrigger("scan");
         isValidating = true;
         redLight.SetActive(false);
         greenLight.SetActive(false);
@@ -92,10 +93,12 @@ public class Station3 : MonoBehaviour
         if(isValidating){
             statusTxt.text = textValues.validationResumed;
             print(textValues.validationResumed);
+            armAnim.speed = 1;
         }
         else{
             statusTxt.text = textValues.validationPaused;
             print(textValues.validationPaused);
+            armAnim.speed = 0;
         }
         
     }
@@ -103,9 +106,9 @@ public class Station3 : MonoBehaviour
     public void StopTimer(){
         if(!isValidating) return;
         isValidating = false;
-        movableDoor.InteractDoor();
         lightTimer = 0;
         statusTxt.color = Color.red;
+        armAnim.SetTrigger("finish");
         SetText(true);
         print(textValues.validationStopped);
         statusTxt.text = textValues.validationStopped;
@@ -151,7 +154,6 @@ public class Station3 : MonoBehaviour
         SetText(true);
         statusTxt.SetText(tempText);
         lightTimer = 0;
-        movableDoor.InteractDoor();
     }
 
     public void SetText(bool val){
