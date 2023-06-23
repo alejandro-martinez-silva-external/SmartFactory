@@ -10,6 +10,7 @@ public class Station3 : MonoBehaviour
     public float validationTime;
     public float lightDuration;
     public Animator armAnim;
+    public TransparencyController transparencyController;
     public Transform center;
     public GameObject redLight;
     public GameObject yellowLight;
@@ -79,10 +80,9 @@ public class Station3 : MonoBehaviour
         greenLight.SetActive(false);
         yellowLight.SetActive(true);
         SetText(true);
-
         statusTxt.color = Color.black;
         statusTxt.text = textValues.validationInProgress;
-        print(textValues.validationInProgress);
+        transparencyController.StartSettingTransparency(2);
     }
 
     public void PauseTimer(){
@@ -154,6 +154,7 @@ public class Station3 : MonoBehaviour
         SetText(true);
         statusTxt.SetText(tempText);
         lightTimer = 0;
+        transparencyController.StartSettingTransparency(0);
     }
 
     public void SetText(bool val){

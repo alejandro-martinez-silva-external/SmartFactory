@@ -2,26 +2,27 @@ using UnityEngine;
 
 public class TransparencyController : MonoBehaviour
 {
-    public float targetAlpha;
-    private bool changeAlpha;
+    private float targetAlpha;
+    private bool changeAlpha = false;
     private Color targetColor;
+    private Color initialColor;
     private Material material;
 
 
     private void Start() {
         material = GetComponent<Renderer>().material;
+        initialColor = material.GetColor("_Color");
         ChangeAlpha(0f);
-        StartSettingTransparency();
     }
 
     private void Update() {
         if(changeAlpha) SetTransparency();
     }
 
-    private void StartSettingTransparency(){
-
+    public void StartSettingTransparency(float alpha){
         Color color = material.GetColor("_Color");
-        targetColor = new Color(0, color.g * targetAlpha, color.b * targetAlpha, 1);
+        targetAlpha = alpha;
+        targetColor = new Color(0, initialColor.g * targetAlpha, initialColor.b * targetAlpha, 1);
         changeAlpha = true;
     }
 
@@ -36,12 +37,12 @@ public class TransparencyController : MonoBehaviour
     public void SetTransparency()
     {
         Color color = material.GetColor("_Color");
-        Color newColor = new Color(0, Mathf.MoveTowards(color.g, targetColor.g, 0.2f * Time.deltaTime),
-         Mathf.MoveTowards(color.b, targetColor.b, 2f * Time.deltaTime));
+        Color newColor = new Color(0, Mathf.MoveTowards(color.g, targetColor.g, Time.deltaTime),
+        Mathf.MoveTowards(color.b, targetColor.b, 2f * Time.deltaTime));
         material.SetColor("_Color", newColor);
+
         if(newColor == targetColor){
             changeAlpha = false;
-            print("code 244");
         }
     }
 }
