@@ -86,6 +86,7 @@ public class Station3 : MonoBehaviour
     }
 
     public void PauseTimer(){
+        print("PauseTimer");
         if(lightTimer == 0) return;
         isValidating = !isValidating;
         statusTxt.color = Color.yellow;
