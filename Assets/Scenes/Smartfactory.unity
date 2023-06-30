@@ -1450,7 +1450,7 @@ PrefabInstance:
     - target: {fileID: 5359233917931116966, guid: e5ff04e30c668f84ab9426448804d58b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5755918766609732214, guid: e5ff04e30c668f84ab9426448804d58b,
         type: 3}
@@ -43211,7 +43211,7 @@ PrefabInstance:
     - target: {fileID: 6142912881054868770, guid: 1423b9ad683d7fa4eb57ddd40b058dec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6290092072763845025, guid: 1423b9ad683d7fa4eb57ddd40b058dec,
         type: 3}
@@ -66857,7 +66857,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652147869181}
-  - component: {fileID: 919132148425441096}
   m_Layer: 0
   m_Name: Station_01
   m_TagString: Untagged
@@ -66865,18 +66864,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &919132148425441096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148425441095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c344017953addf949b638e761443f3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &919132148680871063
 GameObject:
   m_ObjectHideFlags: 0
