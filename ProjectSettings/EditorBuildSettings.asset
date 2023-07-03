@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/HelloWorld.unity
+    path: Assets/Scenes/Smartfactory.unity
     guid: 9174c94c5349d394e93dfed7fdb5f15e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fbe789a9e4730c8499377abdeafee794,

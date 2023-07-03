@@ -17,6 +17,9 @@ namespace UnityEngine.XR.Content.Interaction
         Transform m_Handle = null;
 
         [SerializeField]
+        private GameObject[] lights; 
+
+        [SerializeField]
         [Tooltip("The value of the slider")]
         [Range(0.0f, 1.0f)]
         float m_Value = 0.5f;
@@ -134,6 +137,21 @@ namespace UnityEngine.XR.Content.Interaction
         void OnValidate()
         {
             SetSliderPosition(m_Value);
+        }
+
+        public void TurnLight(){
+            if(m_Value <= 0.1f){
+                for(int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].SetActive(false);
+                }
+            }
+            else if(m_Value >= 0.9f){
+                for(int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].SetActive(true);
+                }
+            }
         }
     }
 }
